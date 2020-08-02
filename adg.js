@@ -24,6 +24,7 @@ function setup() {
 
 
 var a = 0;
+var r = 15;
 
 function draw() {
   translate(width/2,height/2);
@@ -32,12 +33,15 @@ function draw() {
 
   a += 0.05;  // a de angulo
 
-  codo_izq = p5.Vector(-l_brazo, -l_brazo);
-  munie_izq = codo_izq + p5.Vector();
+  codo_izq = p5.Vector.fromAngle(a, l_brazo);
+  antebrazo_izq = p5.Vector.fromAngle(a * -3, l_antebrazo);
+  munie_izq = codo_izq.add(antebrazo_izq);
 
 
 
-  circle(-l_brazo * sin(a), -l_brazo * cos(a), 30);
+  circle(codo_izq.x,  codo_izq.y,  r);
+  circle(munie_izq.x, munie_izq.y, r);
+
 
   //line(cx,cy, );
 }
