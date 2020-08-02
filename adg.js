@@ -17,7 +17,7 @@ function setup() {
   c = createVector(cx, cy);
 
   translate(width/2,height/2);
-  
+
   background(220);
   circle(0, 0, 30);
 }
@@ -32,7 +32,9 @@ function draw() {
 
   a += 0.05;  // a de angulo
 
-  c1 = p5.Vector(-l_brazo, -l_brazo);
+  codo_izq = p5.Vector(-l_brazo, -l_brazo);
+  munie_izq = codo_izq + p5.Vector();
+
 
 
   circle(-l_brazo * sin(a), -l_brazo * cos(a), 30);
