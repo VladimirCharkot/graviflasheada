@@ -1,6 +1,30 @@
-// Esto va a servir más adelante
-// p5.Vector
+// Formas posibles (las que están entre comillas)
+let formas = {
+  'flor' : [1,-3],
+  'tricota' : [1,-2],
+  'masdelomismo' : [2,-3],
+  '3' : [2,-1],
+  'aburrido' : [1,1],
+  'culo' : [1,3],
+  'rapido' : [1,5],
+  'porno' : [2,5],
+};
 
+// Forma visualizada:
+// (poner entre corteches y comillas, como así:)
+
+let forma = formas['flor'];
+
+
+
+
+
+
+
+
+
+
+let formas_posibles = Object.keys(formas);
 
 // medidas
 let w = 400;
@@ -14,7 +38,7 @@ function setup() {
   createCanvas(w, h);
   cx = width/2;
   cy = height/2;
-  c = createVector(cx, cy);
+
 
   translate(width/2,height/2);
 
@@ -23,25 +47,32 @@ function setup() {
 }
 
 
-var a = 0;
-var r = 15;
+let a = 0;
+let r = 15;
+let cual_forma = 0;
+
 
 function draw() {
   translate(width/2,height/2);
-  clear();
-  background(220);
+  //clear();
+  //background(220);
 
-  a += 0.05;  // a de angulo
+  a += PI/72;  // a de angulo
 
-  codo_izq = p5.Vector.fromAngle(a, l_brazo);
-  antebrazo_izq = p5.Vector.fromAngle(a * -3, l_antebrazo);
-  munie_izq = codo_izq.add(antebrazo_izq);
+  if(a % PI*4 == 0){
+    cual_forma = round(a / (PI*4));
+    forma = formas[formas_posibles[cual_forma % formas_posibles.lenght]];
+  }
+
+  codo = p5.Vector.fromAngle(a * forma[0], l_brazo);
+  line(0, 0, codo.x, codo.y);
+
+  antebrazo = p5.Vector.fromAngle(a * forma[1], l_antebrazo);
+  munie = codo.add(antebrazo);
 
 
 
-  circle(codo_izq.x,  codo_izq.y,  r);
-  circle(munie_izq.x, munie_izq.y, r);
+  circle(codo.x,  codo.y,  r);
+  circle(munie.x, munie.y, r);
 
-
-  //line(cx,cy, );
 }
