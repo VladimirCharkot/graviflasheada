@@ -6,14 +6,14 @@ let formas = {
   '3' : [2,-1],
   'aburrido' : [1,1],
   'culo' : [1,3],
-  'rapido' : [1,5],
+  'rapido' : [2,6],
   'porno' : [2,5],
 };
 
 // Forma visualizada:
 // (poner entre corteches y comillas, como así:)
 
-let forma = formas['flor'];
+let forma = formas['rapido'];
 
 
 
@@ -48,7 +48,7 @@ function setup() {
 
 
 let a = 0;
-let r = 25;
+let r = 15;
 let cual_forma = 0;
 let t = 0;
 let limite = 72*4;
