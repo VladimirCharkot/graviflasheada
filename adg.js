@@ -48,20 +48,23 @@ function setup() {
 
 
 let a = 0;
-let r = 15;
+let r = 25;
 let cual_forma = 0;
-
+let t = 0;
+let limite = 72*4;
 
 function draw() {
   translate(width/2,height/2);
-  //clear();
   //background(220);
+  t += 1;
 
   a += PI/72;  // a de angulo
 
-  if(a % PI*4 == 0){
-    cual_forma = round(a / (PI*4));
-    forma = formas[formas_posibles[cual_forma % formas_posibles.lenght]];
+
+  if(t % limite == 0){
+    background(220);
+    let cual = floor(t / limite) % formas_posibles.length;
+    forma = formas[formas_posibles[cual]];
   }
 
   codo = p5.Vector.fromAngle(a * forma[0], l_brazo);
